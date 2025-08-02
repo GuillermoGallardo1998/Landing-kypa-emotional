@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
     header.addEventListener("click", () => {
       const isOpen = option.classList.contains("open");
 
-      // Cerrar todas (modo acordeón)
       faqOptions.forEach(opt => {
         const p = opt.querySelector("p");
         p.style.maxHeight = null;
@@ -66,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!isOpen) {
         option.classList.add("open");
 
-        // 🔥 Esperamos al siguiente frame para calcular altura real
         requestAnimationFrame(() => {
           text.style.maxHeight = text.scrollHeight + "px";
         });
@@ -74,5 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
         toggle.textContent = "-";
       }
     });
+  });
+});
+
+// ===== INITIALIZES AOS =====
+document.addEventListener("DOMContentLoaded", function () {
+  AOS.init({
+    once: true,            // anima cada vez que aparece
+    duration: 1500,         // duración de la animación en ms
+    easing: "ease-in-out",  // tipo de movimiento
   });
 });
